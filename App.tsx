@@ -4,15 +4,21 @@ import {
   Viro3DObject,
   ViroTrackingReason,
   ViroTrackingStateConstants,
+  ViroMaterials,
 } from "@reactvision/react-viro";
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 
+ViroMaterials.createMaterials({
+  ShirtMaterial: {
+    diffuseTexture: require("./models/13647PoloTeamShirt_cloth_diffuse.jpg"),
+  },
+});
+
 const HelloWorldSceneAR = () => {
   const [trackingState, setTrackingState] = useState("Initializing AR...");
 
-  // Position, scale, and rotation for the shirt model
-  const [shirtPosition, setShirtPosition] = useState([0, 0, -6]); // Adjust as needed
+  const [shirtPosition, setShirtPosition] = useState([0, 0, -6]); // Move closer
   const [shirtScale, setShirtScale] = useState([0.1, 0.1, 0.1]); // Adjust as needed
   const [shirtRotation, setShirtRotation] = useState([-90, 0, 0]); // Adjust as needed
 
@@ -30,7 +36,7 @@ const HelloWorldSceneAR = () => {
       {/* 3D Shirt Model */}
       <Viro3DObject
         source={require("./models/13647_Polo_Team_Shirt_v2_L3.obj")}
-        resources={[require("./models/13647PoloTeamShirt_cloth_diffuse.jpg")]}
+        materials={["ShirtMaterial"]} // Assign the custom material
         position={shirtPosition}
         scale={shirtScale}
         rotation={shirtRotation}
