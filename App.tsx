@@ -18,9 +18,9 @@ ViroMaterials.createMaterials({
 const HelloWorldSceneAR = () => {
   const [trackingState, setTrackingState] = useState("Initializing AR...");
 
-  const [shirtPosition, setShirtPosition] = useState([0, 0, -6]); // Move closer
-  const [shirtScale, setShirtScale] = useState([0.1, 0.1, 0.1]); // Adjust as needed
-  const [shirtRotation, setShirtRotation] = useState([-90, 0, 0]); // Adjust as needed
+  const [shirtPosition, setShirtPosition] = useState<[number, number, number]>([0, 0, -6]); // Move closer
+  const [shirtScale, setShirtScale] = useState<[number, number, number]>([0.1, 0.1, 0.1]); // Adjust as needed
+  const [shirtRotation, setShirtRotation] = useState<[number, number, number]>([-90, 0, 0]); // Adjust as needed
 
   function onInitialized(state: any, reason: ViroTrackingReason) {
     console.log("onInitialized", state, reason);
